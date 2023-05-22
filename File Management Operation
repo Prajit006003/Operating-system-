@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+
+int main()
+
+{
+
+    // Creating a file
+
+    FILE *fp;
+
+    fp = fopen("sample.txt", "w");
+
+    if (fp == NULL)
+
+    {
+
+        printf("Error creating file\n");
+
+        exit(1);
+
+    }
+
+    else
+
+    {
+
+        printf("File created successfully\n");
+
+    }
+
+    // Writing to a file
+
+    char *text = "Writing to file";
+
+    fwrite(text, sizeof(char), sizeof(text), fp);
+
+    printf("Text written to file\n");
+
+    // Closing the file
+
+    fclose(fp);
+
+    // Reading from a file
+
+    fp = fopen("sample.txt", "r");
+
+    char buffer[100];
+
+    fread(buffer, sizeof(char), sizeof(buffer), fp);
+
+    printf("Text read from file: %s\n", buffer);
+
+    // Closing the file
+
+    fclose(fp);
+
+    return 0;
+
+}
